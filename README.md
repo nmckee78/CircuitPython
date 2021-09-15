@@ -10,9 +10,9 @@
 ## Hello_CircuitPython
 
 ### Description & Code
-This was the first thing I did with circuitpython and I got the light to blink and be a bright pink color
+This was the first thing I did with circuitpython and I got the light to blink and change between bright pink and blue
 
-Here's how you make code look like code:
+This is my code:
 
 ```python
 import board
@@ -27,7 +27,7 @@ dot.brightness = 0.3
 while True:
     dot.fill((255, 0, 191))
     time.sleep(0.5)
-    dot.fill((0, 0, 0))
+    dot.fill((100,0,255))
     time.sleep(0.5)
 
 ```
