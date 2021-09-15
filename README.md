@@ -37,11 +37,10 @@ while True:
  ![This is the gif of it working](https://github.com/nmckee78/CircuitPython/blob/main/ezgif.com-gif-maker.gif)
 
 ### Wiring
-Make an account with your google ID at [tinkercad.com](https://www.tinkercad.com/learn/circuits), and use "TinkerCad Circuits to make a wiring diagram."  It's really easy!  
-Then post an image here.   [here's a quick tutorial for all markdown code, like making links](https://guides.github.com/features/mastering-markdown/)
+There wasn't any wiring needed.
 
 ### Reflection
-What went wrong / was challenging, how'd you figure it out, and what did you learn from that experience?  Your ultimate goal for the reflection is to pass on knowledge that will make this assignment better or easier for the next person.
+It took me a bit of time how circuitpython works but once I figured out how to import different things it was fairly easy.
 
 
 
@@ -58,7 +57,8 @@ Code goes here
 ### Evidence
 
 ### Wiring
-
+Make an account with your google ID at [tinkercad.com](https://www.tinkercad.com/learn/circuits), and use "TinkerCad Circuits to make a wiring diagram."  It's really easy!  
+Then post an image here.   [here's a quick tutorial for all markdown code, like making links](https://guides.github.com/features/mastering-markdown/)
 ### Reflection
 
 
