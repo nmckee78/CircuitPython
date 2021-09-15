@@ -34,7 +34,7 @@ while True:
 
 
 ### Evidence
-Pictures / Gifs of your work should go here.  You need to communicate what your thing does.
+ ![This is the gif of it working](https://github.com/nmckee78/CircuitPython/blob/main/ezgif.com-gif-maker.gif)
 
 ### Wiring
 Make an account with your google ID at [tinkercad.com](https://www.tinkercad.com/learn/circuits), and use "TinkerCad Circuits to make a wiring diagram."  It's really easy!  
