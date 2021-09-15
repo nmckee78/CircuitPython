@@ -10,12 +10,25 @@
 ## Hello_CircuitPython
 
 ### Description & Code
-Description goes here
+This was the first thing I did with circuitpython and I got the light to blink and be a bright pink color
 
 Here's how you make code look like code:
 
 ```python
-Code goes here
+import board
+import neopixel
+import time
+
+dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
+
+print("Make it red!")
+
+dot.brightness = 0.3
+while True:
+    dot.fill((255, 0, 191))
+    time.sleep(0.5)
+    dot.fill((0, 0, 0))
+    time.sleep(0.5)
 
 ```
 
