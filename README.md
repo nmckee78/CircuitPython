@@ -89,8 +89,7 @@ while True:
 
     
 ### Wiring
-Make an account with your google ID at [tinkercad.com](https://www.tinkercad.com/learn/circuits), and use "TinkerCad Circuits to make a wiring diagram."  It's really easy!  
-Then post an image here.   [here's a quick tutorial for all markdown code, like making links](https://guides.github.com/features/mastering-markdown/)
+![Picture of the wiring](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Brilliant%20Vihelmo-Bigery.png)
 ### Reflection
 I had some trouble getting the code and wiring to work as the insturctions on the code website was a bit confusing but with a bit of help I managed to figure it out
 
