@@ -174,17 +174,46 @@ This one was very hard to figure out because first I had to figure out how to wi
 
 
 
-## NextAssignment
+## CircuitPython Photointerrupters
 
 ### Description & Code
-
+The photointerrupter is a device that uses an led and a sensor to tell when something interupts the light in a small passage and then prints the number or times it is interrupted
 ```python
-Code goes here
+from digitalio import DigitalInOut, Direction, Pull
+import time
+import board
+
+interrupter = DigitalInOut(board.D7)
+interrupter.direction = Direction.INPUT
+interrupter.pull = Pull.UP
+initial = time.monotonic()  # Time in seconds since power on
+
+counter = 0
+
+photo = False
+state = False
+
+max = 4
+start = time.monotonic()
+
+while True:
+    photo = interrupter.value
+    if photo and not state:
+        counter += 1
+    state = photo
+
+    remaining = max + start - time.monotonic()
+
+    if remaining <= 0:
+        print("The number of interrupts is:", str(counter))
+        max = time.monotonic() + 4
+        counter = 0
 
 ```
 
 ### Evidence
-
+![Picture of the code working](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Photointerrupter%20Screenshot.PNG)
 ### Wiring
-
+![This is obviously not the actual photointerrupter but as there is no photointerrupter on tinkercad this is the best equivalent,it uses the same ports as the photointerrupter aswell](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Ingenious%20Wluff-Jaiks.png)
 ### Reflection
+The photointerrupter was not incredibly complicated however there were a few important things, including making sure the two wires going to 5 volt are duct taped together and not touching the other wires. Also this was the final straw of my use of the MU software as it was causing me serious issues and I switched over to VS code which got it working.
