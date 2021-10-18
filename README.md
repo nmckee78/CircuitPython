@@ -3,8 +3,10 @@
 * [Table of Contents](#TableOfContents)
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
+* [CircuitPython Distance Sensor](#CircuitPython_DistanceSensor)
+* [CircuitPython_Photointerrupters](#CircuitPython_Photointerrupters)
 * [CircuitPython_LCD](#CircuitPython_LCD)
-* [NextAssignmentGoesHere](#NextAssignment)
+* 
 ---
 
 ## Hello_CircuitPython
@@ -174,7 +176,7 @@ This one was very hard to figure out because first I had to figure out how to wi
 
 
 
-## CircuitPython Photointerrupters
+## CircuitPython_Photointerrupters
 
 ### Description & Code
 The photointerrupter is a device that uses an led and a sensor to tell when something interupts the light in a small passage and then prints the number or times it is interrupted
