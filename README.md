@@ -5,7 +5,7 @@
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [CircuitPython Distance Sensor](#CircuitPython_DistanceSensor)
 * [CircuitPython_Photointerrupters](#CircuitPython_Photointerrupters)
-* [CircuitPython_LCD](#CircuitPython_LCD)
+* [CircuitPython_LCD](#CircuitPython_Lcd)
 ---
 
 ## Hello_CircuitPython
