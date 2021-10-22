@@ -3,7 +3,7 @@
 * [Table of Contents](#TableOfContents)
 * [Hello_CircuitPython](#Hello_CircuitPython)
 * [CircuitPython_Servo](#CircuitPython_Servo)
-* [CircuitPython Distance Sensor](#CircuitPython_DistanceSensor)
+* [CircuitPython Distance_Sensor](#CircuitPython_DistanceSensor)
 * [CircuitPython_Photointerrupters](#CircuitPython_Photointerrupters)
 * [CircuitPython Lcd](#CircuitPython_Lcd)
 ---
@@ -96,7 +96,7 @@ I had some trouble getting the code and wiring to work as the insturctions on th
 
 
 
-## CircuitPython_DistanceSensor
+## CircuitPython DistanceSensor
 
 ### Description & Code
  The distance sensor is used to change the color from red then fades to blue then fades to green
