@@ -223,7 +223,7 @@ The photointerrupter was not incredibly complicated however there were a few imp
 
 
 
-## CircuitPython Lcd
+## CircuitPython_Lcd
 
 ### Description & Code
 The lcd was supposed to be able to print when the capacitive touch was triggered printing the number of times it was touched and then the other capacitive touch wire telling it to swich from counting up to counting down into the negatives
