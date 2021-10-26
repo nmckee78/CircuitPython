@@ -11,7 +11,7 @@
 ## Hello_CircuitPython
 
 ### Description & Code
-This was the first assignment and our task was to code a light to blink and change colors.
+This was the first assignment and our task was to code a light to blink and change colors. I got mine to blink and change between two colors. 
 
 This is my code:
 
@@ -20,12 +20,12 @@ import board
 import neopixel
 import time
 
-dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
+dot = neopixel.NeoPixel(board.NEOPIXEL, 1) - Dot is the code that represents the light(neopixel)
 
 print("Make it red!")
 
 dot.brightness = 0.3
-while True:
+while True:                 - This part tells it to blink between one color[dot.fill((255, 0, 191))] and the other [dot.fill((100,0,255))]
     dot.fill((255, 0, 191))
     time.sleep(0.5)
     dot.fill((100,0,255))
@@ -36,12 +36,13 @@ while True:
 
 ### Evidence
  ![This is the gif of it working](https://github.com/nmckee78/CircuitPython/blob/main/Gif%20folder/ezgif.com-gif-maker.gif)
+ #### The light can be seen blinking and changing between one color and another.
 
 ### Wiring
 There wasn't any wiring needed.
 
 ### Reflection
-It took me a bit of time to get used to how circuitpython works compared to our previous code. Once I figured out how to import parts that are needed it got a lot easier. Then I found the proper code I needed I was able to put that in. Then I adapted it for what I needed and I was done!
+It took me a bit of time to get used to how circuitpython works compared to our previous code. Once I figured out how to import parts by using the resources online and importing the needed libraries into the lib folder it got a lot easier. Then I found the proper code I needed I was able to put that in as it's fairly easy to just look up what you need and with a bit of digging you should be able to find it. Then I adapted it for what I needed and I was done.
 
 
 
@@ -49,12 +50,13 @@ It took me a bit of time to get used to how circuitpython works compared to our 
 ## CircuitPython_Servo
 
 ### Description & Code
-The servo assignment was to get a servo to spin and then to use the capcitive touch to control the direction.
+The servo assignment was to get a servo to spin and then to use the capcitive touch to control the direction. I got mine to effectivley doing this with it being able to turn simply by a tap on a wire.
+
 ```python
 import time
 import board
-import pwmio
-import touchio
+import pwmio - The Pwmio is the import needed for the servo to function
+import touchio - The touchio is the import needed for the capcitive touch
 
 from adafruit_motor import servo
 
@@ -65,12 +67,11 @@ pwm = pwmio.PWMOut(board.A2, duty_cycle=2 ** 15, frequency=50)
 my_servo = servo.Servo(pwm)
 
 
-touch_pad = board.A0  # Will not work for Circuit Playground Express!
-touch_pad = board.A5
+touch_pad = board.A0  # Will not work for Circuit Playground Express! - These four commands were needed for the wiring so the code knew what wires it was using for the           touch_pad = board.A5                                                      capacitive touch
 touch_A0 = touchio.TouchIn(board.A0)
 touch_A5 = touchio.TouchIn(board.A5)
 
-while True:
+while True:     - These two commands are for the two capcitive touch wires, one tells the servo to spin one way while the other one tells it to spin the other way
     if touch_A0.value:
         print("Touched 1!")
         for angle in range(180, 0, -5): # 180 - 0 degrees, 5 degrees at a time.
@@ -87,30 +88,33 @@ while True:
 
 ### Evidence
  ![This is the gif of it working](https://github.com/nmckee78/CircuitPython/blob/main/Gif%20folder/ezgif.com-gif-maker%20(1).gif)
+ #### This is a video of the capcitive touch telling the servo to switch directions
 
     
 ### Wiring
 ![Picture of the wiring](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Brilliant%20Vihelmo-Bigery.png)
+
 ### Reflection
-This assignment was much more complicated as it basically had two layers to it. The first layer was to get the servo code to work which was not that hard once I found a guide online. Then I had to figure out the capcitive touch which was certainly harder however I eventually got it to work. Then I needed to combine the two together to complete the full task and that part was suprisngly easy once I figured out the logic.
+This assignment was much more complicated as it basically had two layers to it. The first layer was to get the servo code to work which was not that hard once I found a guide online. Then I had to figure out the capcitive touch which was certainly harder however I eventually got it to work by finding something similar online and using applied knowledge. Then I needed to combine the two together to complete the full task and that part was suprisngly easy once I figured out the logic.
 
 
 
 ## CircuitPython DistanceSensor
 
 ### Description & Code
-The task was to get a distancesensor to be able to pick up the distance from a surface and a light to change color corresponding with the distance.
+The task was to get a distance sensor to be able to pick up the distance from a surface and a light to change color corresponding with the distance. I got it to work as directed with it displaing red then shifting to blue and finally to green as it got further and further out.
+
 ```python
 import time
 import board
-import adafruit_hcsr04
+import adafruit_hcsr04 - This is what the distance sensor uses to actually calculate the distance
 import neopixel
-import simpleio
+import simpleio - This gathers the distance from the sensor and tells the neopixel what to display
 
 sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)
 dot = neopixel.NeoPixel(board.NEOPIXEL, 10, brightness=0.5)
 
-r = 0
+r = 0 - This sets the rgb values to zero so that the neopixel isn't already running a color before it starts
 g = 0
 b = 0
 
@@ -118,28 +122,28 @@ b = 0
 while True:
 
     try:
-        distance = sonar.distance
+        distance = sonar.distance - This starts the distance sensor
         print((distance,))
 
-        if distance < 5:
+        if distance < 5: - This is telling it that if the distance is less than 5 it will be red 
             r = 255
             g = 0
             b = 0
-        elif distance > 5 and distance < 20:
+        elif distance > 5 and distance < 20: - This uses the simpleio logic to tell the neopixel to fade from red(when closer to 5) to blue(when closer to 25)
             r = simpleio.map_range(distance, 5, 20, 255, 0)
             b = simpleio.map_range(distance, 5, 20, 0, 255)
             g = 0
             r = int(r)
             g = int(g)
             b = int(b)
-        elif distance > 20 and distance < 35:
+        elif distance > 20 and distance < 35: - This applies the same logic as above with it going from blue to green as it gets further away
             r = 0
             b = simpleio.map_range(distance, 20, 35, 255, 0)
             g = simpleio.map_range(distance, 20, 35, 0, 255)
             r = int(r)
             g = int(g)
             b = int(b)
-        elif distance > 35:
+        elif distance > 35: - This is telling it to be green if it's over 35 
             r = 0
             b = 0
             g = 255
@@ -165,9 +169,11 @@ while True:
 
 ### Evidence
 ![This is the gif of it working](https://github.com/nmckee78/CircuitPython/blob/main/Gif%20folder/ezgif.com-gif-maker%20(2).gif)
+#### This is a video displaying the code working correctly as you can see as the colors change.
 
 ### Wiring
 ![Picture of the wiring](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Smashing%20Esboo-Snicket.png)
+
 ### Reflection
 This one was very hard to figure out because first I had to figure out how to wire the distance sensor correctly. Then I had to figure out the rgb values and figure out the correct ranges and formulas to work. This was also with Mu and circuitPython being very wierd the whole time. Then I messed up the error message for it not working at the end which took another think to figure out. Once I had that figured out I just had to use the same logic to combine it all together.
 
@@ -214,8 +220,10 @@ while True:
 
 ### Evidence
 ![Picture of the code working](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Photointerrupter%20Screenshot.PNG)
+
 ### Wiring
 ![This is obviously not the actual photointerrupter but as there is no photointerrupter on tinkercad this is the best equivalent,it uses the same ports as the photointerrupter aswell](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Ingenious%20Wluff-Jaiks.png)
+
 ### Reflection
 The photointerrupter was not incredibly complicated however there were a few important things, including making sure the two wires going to 5 volt are duct taped together and not touching the other wires. Also this was the final straw of my use of the MU software as it was causing me serious issues and I switched over to VS code which got it working. I found most of the code from what I believe was a fellow students repository which is pretty cool. I had to adapt it a bit to fit the assignment and that was about it.
 
