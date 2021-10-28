@@ -185,31 +185,32 @@ This one was very hard to figure out because first I had to figure out how to wi
 
 ### Description & Code
 The photointerrupter is a device that uses an led and a sensor to tell when something interupts the light in a small passage and our task was to get it to print how many times it was interrupted.
+
 ```python
-from digitalio import DigitalInOut, Direction, Pull
+from digitalio import DigitalInOut, Direction, Pull - This is the Import needed for the photo interrupter
 import time
 import board
 
-interrupter = DigitalInOut(board.D7)
+interrupter = DigitalInOut(board.D7) - This tells the code what pin will be used for the photointerrupter on the board
 interrupter.direction = Direction.INPUT
 interrupter.pull = Pull.UP
 initial = time.monotonic()  # Time in seconds since power on
 
-counter = 0
+counter = 0 - This sets the number of interrupts to zero before it starts
 
 photo = False
 state = False
 
-max = 4
-start = time.monotonic()
+max = 4 - 
+start = time.monotonic() - 
 
 while True:
     photo = interrupter.value
-    if photo and not state:
+    if photo and not state: - This tells the counter to count the interrupts 1 at a time
         counter += 1
     state = photo
 
-    remaining = max + start - time.monotonic()
+    remaining = max + start - time.monotonic() - This equation calculates the time inbetween when the number of interrupts is counted
 
     if remaining <= 0:
         print("The number of interrupts is:", str(counter))
@@ -220,6 +221,7 @@ while True:
 
 ### Evidence
 ![Picture of the code working](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Photointerrupter%20Screenshot.PNG)
+#### This is a video of the photointerrupter working
 
 ### Wiring
 ![This is obviously not the actual photointerrupter but as there is no photointerrupter on tinkercad this is the best equivalent,it uses the same ports as the photointerrupter aswell](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Ingenious%20Wluff-Jaiks.png)
@@ -235,12 +237,13 @@ The photointerrupter was not incredibly complicated however there were a few imp
 
 ### Description & Code
 The lcd was supposed to be able to print when the capacitive touch was triggered printing the number of times it was touched and then the other capacitive touch wire telling it to swich from counting up to counting down into the negatives.
+
 ```python
 import board
-from lcd.lcd import LCD
+from lcd.lcd import LCD - This is the import for the lcd scree
 from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
 import time
-import touchio
+import touchio - This is the import for the capcitive touch as used in the capcitive touch assignment
 
 i2c = board.I2C()
 lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
@@ -258,14 +261,14 @@ while True:
         count += updown
         lcd.clear()
         if updown == 1:
-            lcd.print("Up: ")
+            lcd.print("Up: ") - This part tells the code that if the wire going into the A5 pin is touched it will start counting 
         else:
             lcd.print("Down: ")
         lcd.print(str(count))
         while touch_A5.value:
             time.sleep(0.01)
     if touch_A0.value:
-        updown = -updown
+        updown = -updown - This part tells it whether it should be counting up or down and when touched it will switch directions
         while touch_A0.value:
             time.sleep(0.1)
         lcd.clear()
@@ -280,6 +283,7 @@ while True:
 
 ### Evidence
 ![Picture of the code working](https://github.com/nmckee78/CircuitPython/blob/main/Gif%20folder/ezgif.com-gif-maker%20(3).gif)
+#### This is a video of the lcd counting up and then switching
 ### Wiring
 ![This is simply a represantition of the code as there is no Lcd backapack in tinkercad](https://github.com/nmckee78/CircuitPython/blob/main/Pictures/Fantabulous%20Waasa.png)
 ### Reflection
